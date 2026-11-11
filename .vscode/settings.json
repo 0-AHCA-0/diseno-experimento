@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "*.R": "r",
+        "*.r": "r"
+    },
+    "code-runner.executorMap": {
+        "r": "Rscript"
+    },
+    "code-runner.executorMapByFileExtension": {
+        ".R": "Rscript",
+        ".r": "Rscript"
+    },
+    "code-runner.runInTerminal": true,
+    "r.rterm.linux": "/usr/bin/R",
+    "r.rpath.linux": "/usr/bin/R"
+}

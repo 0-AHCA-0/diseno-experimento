@@ -1,5 +1,6 @@
-import pandas as pd 
-import numpy as np 
+import pandas as pd
+import numpy as np
+from scipy import stats
 
 df = pd.read_csv("/home/acha/EsPRo/lab4/diseno-experimento/plantillas/registro_experimento.csv")
 
@@ -58,5 +59,17 @@ dev = round(piv['diferencia'].std(ddof=1), 2)
 print(media)
 print(dev)
 #print(piv)
+n = len(piv)
+t_crict = stats.t.ppf(0.975, df=9)
+ic_inf = media - (t_crict*dev/n**0.5)
+ic_sup = media + (t_crict*dev/n**0.5) 
+#print(round(ic_sup,2))
+#print(round(t_crict, 2))
 
+#El experimento podemos decir que con un 95% de certeza es el valor promedio de la diferencia de ventas del producto
+#Se entra el pasillo principal y el habitual va a caer en el rango 
+print(f"{ic_inf} - {ic_sup}")
 
+#prueba p-value
+prueba = stats.ttest_rel(piv["pasillo_principal"], piv['habitual'])
+print(f"{prueba.pvalue: .10f}")
